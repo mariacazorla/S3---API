@@ -11,6 +11,8 @@ import { config } from './config';
 // peticiones, así que no se pueden quedar desfasados.
 const { swagger: authorInput } = j2s(Schemas.author.create);
 const { swagger: bookInput } = j2s(Schemas.book.create);
+const { swagger: bookTagInput } = j2s(Schemas.book.addTag);
+const { swagger: bookTagsInput } = j2s(Schemas.book.updateTags);
 
 // Lo que devuelve la API no es igual a lo que se envía: lleva el _id y las fechas que
 // pone MongoDB, el autor nunca devuelve la contraseña, y el libro trae sus autores enteros.
@@ -105,6 +107,8 @@ const swaggerDocument = swaggerJsdoc({
             schemas: {
                 AuthorInput: authorInput,
                 BookInput: bookInput,
+                BookTagInput: bookTagInput,
+                BookTagsInput: bookTagsInput,
                 Author: authorSchema,
                 Book: bookSchema
             },

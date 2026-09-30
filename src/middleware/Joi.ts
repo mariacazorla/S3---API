@@ -103,6 +103,16 @@ export const Schemas = {
 
     // Validaciones relacionadas con los libros
     book: {
+        // Només acceptem els tags de la llista del model.
+        addTag: Joi.object({
+            tag: Joi.string().valid(...BOOK_TAGS).required()
+        }).required(),
+
+        // La llista és obligatòria, però pot estar buida.
+        updateTags: Joi.object({
+            tags: Joi.array().items(Joi.string().valid(...BOOK_TAGS)).required()
+        }).required(),
+
         // Esquema que se utiliza cuando queremos crear un libro
         create: Joi.object<IBook>({
             // El titulo es obligatorio

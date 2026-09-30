@@ -99,9 +99,9 @@ Objetivos del Seminario 5:
 - [x] Documentación con Swagger
 - [x] Linter
 
-Los objetivos del seminario están cubiertos. Lo único abierto es el ejercicio propuesto:
+Els objectius del seminari i l’exercici proposat estan fets:
 
-- [ ] **CRUD de los tags de un libro**, con el enunciado en [EXERCISE.md](EXERCISE.md).
+- [x] **Tags d’un llibre**: afegir un tag sense duplicats, substituir la llista i treure un tag. Validació amb Joi i `ValidateId`, i rutes documentades a Swagger. Enunciat a [EXERCISE.md](EXERCISE.md).
 
 Nota sobre las contraseñas: las de los datos de ejemplo son públicas a propósito (ver el README).
 Este es un proyecto de clase, no una aplicación real.

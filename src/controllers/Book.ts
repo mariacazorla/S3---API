@@ -101,5 +101,50 @@ const deleteBook = async (req: Request<{ bookId: string }>, res: Response, next:
     }
 };
 
-// Exportamos todas las funciones para poder utilizarlas en las rutas
-export default { createBook, readBook, readAll, updateBook, deleteBook };
+// Afegim un tag i retornem el llibre actualitzat.
+const addTag = async (req: Request<{ bookId: string }>, res: Response, next: NextFunction) => {
+    try {
+        const book = await BookService.addTag(req.params.bookId, req.body.tag);
+
+        if (book) {
+            res.status(200).json({ book });
+        } else {
+            res.status(404).json({ message: 'No s’ha trobat el llibre' });
+        }
+    } catch (error) {
+        next(error);
+    }
+};
+
+// Substituïm la llista de tags del llibre.
+const updateTags = async (req: Request<{ bookId: string }>, res: Response, next: NextFunction) => {
+    try {
+        const book = await BookService.updateTags(req.params.bookId, req.body.tags);
+
+        if (book) {
+            res.status(200).json({ book });
+        } else {
+            res.status(404).json({ message: 'No s’ha trobat el llibre' });
+        }
+    } catch (error) {
+        next(error);
+    }
+};
+
+// Traiem el tag indicat a la URL.
+const deleteTag = async (req: Request<{ bookId: string; tag: string }>, res: Response, next: NextFunction) => {
+    try {
+        const book = await BookService.deleteTag(req.params.bookId, req.params.tag);
+
+        if (book) {
+            res.status(200).json({ book });
+        } else {
+            res.status(404).json({ message: 'No s’ha trobat el llibre' });
+        }
+    } catch (error) {
+        next(error);
+    }
+};
+
+// Exportem les funcions per fer-les servir a les rutes.
+export default { createBook, readBook, readAll, updateBook, deleteBook, addTag, updateTags, deleteTag };
